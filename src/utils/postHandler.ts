@@ -46,7 +46,7 @@ function normalizeSlug(s: string): string {
 
 // This just extracts the frontmatter from each post and grabs whatever is available
 function frontmatter(mod: any) {
-  return mod?.metadata ?? mod?.frontmatter ?? mod?.meta ?? {};
+  return mod?.attributes ?? mod?.default?.attributes ?? mod?.frontmatter ?? {};
 }
 
 // entries maps of each module, it returns an object containing the dynamic import (loader) and the clean slug (getSlugFromPath) from each module.
@@ -69,12 +69,19 @@ export async function getAllPostMeta(): Promise<PostMeta[]> {
       try {
         const mod = await loader();
         const fm = frontmatter(mod);
+        const rawTags = fm?.tags;
+        const tags: string[] | undefined =
+          Array.isArray(rawTags)
+            ? rawTags.filter(Boolean)
+            : typeof rawTags === 'string' && rawTags.trim().length > 0
+            ? rawTags.split(',').map(s => s.trim()).filter(Boolean)
+            : undefined;
         return {
           slug,
           title: fm.title ?? slug,
           date: fm.date,
           excerpt: fm.excerpt,
-          tags: fm.tags,
+          tags,
           ...fm,
         } as PostMeta;
       } catch (e: unknown) {
