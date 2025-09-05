@@ -1,12 +1,20 @@
+import { Link } from 'react-router-dom';
+
 const Navbar = () => {
   return (
     <>
       <div className='navbar'>
         <div className='nav-namespace'>Max Weekley</div>
         <div className='nav-list'>
-          <div className='nav-item'>Home</div>
-          <div className='nav-item'>Blog</div>
-          <div className='nav-item'>About</div>
+          <Link to={'/'} className='nav-item'>
+            Home
+          </Link>
+          <Link to={'/blog'} className='nav-item'>
+            Blog
+          </Link>
+          <Link to={'/about'} className='nav-item'>
+            About
+          </Link>
         </div>
       </div>
     </>

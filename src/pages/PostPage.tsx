@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
 import PostHeader from '../components/PostHeader';
 
 const PostPage = () => {
@@ -32,7 +31,6 @@ const PostPage = () => {
   if (notFound)
     return (
       <>
-        <Navbar />
         <div className='postContainer'>
           <div className='post'>
             <PostHeader />
@@ -44,7 +42,6 @@ const PostPage = () => {
 
   return (
     <>
-      <Navbar />
       <div className='postContainer'>
         <div className='post'>
           <PostHeader />
