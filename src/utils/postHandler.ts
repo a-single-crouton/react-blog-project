@@ -7,6 +7,7 @@ export type PostMeta = {
   date?: string;
   excerpt?: string;
   tags?: string[];
+  image: string;
   [k: string]: any;
 };
 
@@ -82,6 +83,7 @@ export async function getAllPostMeta(): Promise<PostMeta[]> {
           date: fm.date,
           excerpt: fm.excerpt,
           tags,
+          image: fm.image,
           ...fm,
         } as PostMeta;
       } catch (e: unknown) {

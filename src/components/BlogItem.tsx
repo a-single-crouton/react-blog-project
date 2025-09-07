@@ -7,14 +7,14 @@ type Props = {
 };
 
 const BlogItem = ({ meta }: Props): JSX.Element => {
-  const { slug, title, excerpt, tags } = meta;
+  const { slug, title, excerpt, tags, image } = meta;
 
   return (
     <>
-      <Link to={`/blog/${slug}`}>
+      <Link className='blog-link' to={`/blog/${slug}`}>
         <div className='blog-item-container' aria-labelledby={`blog-${slug}`}>
           <div className='blog-item-img-container'>
-            <div className='blog-item-image'></div>
+            <img className='blog-item-image' src={image} />
           </div>
           <div className='blog-item-text-container'>
             <div className='blog-item-title'>{title ?? slug}</div>

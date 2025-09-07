@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import PostHeader from '../components/PostHeader';
+import PostHeader from '../components/Post/PostHeader';
 
 const PostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -31,7 +31,7 @@ const PostPage = () => {
   if (notFound)
     return (
       <>
-        <div className='postContainer'>
+        <div className='post-container'>
           <div className='post'>
             <PostHeader />
             <div className='post-body'>Post not found.</div>
@@ -42,7 +42,7 @@ const PostPage = () => {
 
   return (
     <>
-      <div className='postContainer'>
+      <div className='post-container'>
         <div className='post'>
           <PostHeader />
           <div className='post-body'>
