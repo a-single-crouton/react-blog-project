@@ -92,7 +92,8 @@
   height: 3.6rem;
   z-index: 1;
   border-radius: 50%;
-  color: var(--text-body);
+  /* color: var(--text-body); */
+  color: #333;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,6 +107,7 @@
 }
 .embla__play {
   -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
+  font-family: 'Source Sans 3', sans-serif;
   -webkit-appearance: none;
   appearance: none;
   background-color: transparent;
@@ -122,8 +124,9 @@
   align-items: center;
   justify-content: center;
   justify-self: flex-end;
-  color: var(--text-body);
-  font-weight: 700;
+  /* color: var(--text-body); */
+  color: #333;
+  font-weight: 600;
   font-size: 1.4rem;
   padding: 0 2.4rem;
   min-width: 8.4rem;
@@ -141,7 +144,8 @@
   overflow: hidden;
 }
 .embla__progress__bar {
-  background-color: var(--text-body);
+  /* background-color: var(--text-body); */
+  background-color: #faa634;
   position: absolute;
   width: 100%;
   top: 0;
@@ -181,7 +185,8 @@
 .header {
   font-size: 2rem;
   font-weight: 700;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: 'Source Sans 3', sans-serif;
   text-align: center;
   padding: 4rem 2rem 2rem 2rem;
   margin: 0;
@@ -198,7 +203,8 @@
   text-decoration: none;
   text-align: center;
   font-weight: 600;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: 'Source Sans 3', sans-serif;
   color: var(--text-low-contrast);
   font-size: 1rem;
 }
@@ -208,4 +214,18 @@
   height: 2rem;
   margin-right: 0.5rem;
   fill: currentColor;
+}
+
+/* CUSTOM CAROUSEL STYLES */
+.embla__slide__img {
+  border-radius: 5px;
+}
+.block {
+  text-decoration: none;
+}
+.embla__slide__title {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  /* color: #f3f3f3; */
+  color: #333333;
+  font-family: 'Source Sans 3', sans-serif;
 }

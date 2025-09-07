@@ -1,17 +1,17 @@
-import Carousel from '../components/Carousel/Carousel';
-import type { EmblaOptionsType } from 'embla-carousel';
+// import type { EmblaOptionsType } from 'embla-carousel';
 import Header from '../components/Carousel/CarouselHeader';
 import Footer from '../components/Carousel/CarouselFooter';
 import '../components/Carousel/embla-styles.css';
+import RecentPostsCarousel from '../components/Carousel/RecentPostsCarousel';
 
 const HomePage = () => {
-  const OPTIONS: EmblaOptionsType = { loop: true };
-  const SLIDE_COUNT = 5;
-  const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
+  // const OPTIONS: EmblaOptionsType = { loop: true };
+  // const SLIDE_COUNT = 5;
+  // const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
   return (
     <>
       <Header />
-      <Carousel slides={SLIDES} options={OPTIONS} />
+      <RecentPostsCarousel />
       <Footer />
       <p>Homepage works!</p>
       {/* <div className='home-page-grid'>

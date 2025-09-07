@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import type { EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
@@ -10,16 +11,21 @@ import {
   usePrevNextButtons,
 } from './CarouselArrowButtons';
 
+type CarouselPost = {
+  slug: string;
+  title: string;
+  image?: string;
+};
+
 type PropType = {
-  slides: number[];
+  posts: CarouselPost[];
   options?: EmblaOptionsType;
 };
 
-const EmblaCarousel: React.FC<PropType> = (props) => {
-  const { slides, options } = props;
+const EmblaCarousel: React.FC<PropType> = ({ posts, options }) => {
   const progressNode = useRef<HTMLDivElement | null>(null);
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    Autoplay({ playOnInit: false, delay: 3000 }),
+    Autoplay({ playOnInit: true, delay: 4000 }),
   ]);
 
   const {
@@ -38,11 +44,38 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     <div className='embla'>
       <div className='embla__viewport' ref={emblaRef}>
         <div className='embla__container'>
-          {slides.map((index) => (
-            <div className='embla__slide' key={index}>
-              <div className='embla__slide__number'>
-                <span>{index + 1}</span>
-              </div>
+          {posts.map((p) => (
+            <div className='embla__slide' key={p.slug}>
+              <Link to={`/blog/${p.slug}`} className='block'>
+                <div className='embla__slide__number'>
+                  {p.image ? (
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className='embla__slide__img'
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  ) : (
+                    <div
+                      className='embla__slide__placeholder'
+                      style={{ width: '100%', height: '100%' }}
+                    >
+                      No image
+                    </div>
+                  )}
+                </div>
+                <h3
+                  className='embla__slide__title'
+                  style={{ marginTop: '0.5rem', textAlign: 'center' }}
+                >
+                  {' '}
+                  {p.title}
+                </h3>
+              </Link>
             </div>
           ))}
         </div>

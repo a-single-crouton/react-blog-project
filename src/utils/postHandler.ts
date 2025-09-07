@@ -111,6 +111,20 @@ export async function getAllPostMeta(): Promise<PostMeta[]> {
   return list;
 }
 
+// getRecentPostMeta accepts a limit and image-gating, and returns
+// a promise. it awaits all posts, then slices them at the 'limit' which
+// is 5 by default.
+
+export async function getRecentPostMeta(
+  limit = 5,
+  requireImage = false
+): Promise<PostMeta[]> {
+  const all = await getAllPostMeta();
+
+  const list = requireImage ? all.filter(p => !!p.image) : all;
+  return list.slice(0, Math.max(0, limit));
+}
+
 
 // getPostBySlug accepts a raw slug and returns a promise containing metadata 
 // and a component of any type. The slug is then cleaned, then entries is searched 
